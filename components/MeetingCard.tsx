@@ -6,6 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { avatarImages } from "@/constants";
+import { MdOutlineContentCopy } from "react-icons/md";
 
 interface MeetingCardProps {
   icon: React.ReactNode;
@@ -30,12 +31,12 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
 }) => {
   const { toast } = useToast();
   return (
-    <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-dark-1 px-5 py-8 xl:max-w-[568px]">
+    <section className="flex min-h-[258px] w-full flex-col justify-between bg-[#ffffff] rounded-[14px] bg-white px-5 py-8 xl:max-w-[568px]">
       <article className="flex flex-col gap-5">
-        <span>{icon}</span>
+        <span className="text-xl">{icon}</span>
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-bold">{title}</h1>
+            <h1 className="text-2xl font-bold capitalize">{title}</h1>
             <p className="text-base font-normal">{date}</p>
           </div>
         </div>
@@ -60,7 +61,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
 
         {!isPreviousMeeting && (
           <div className="flex gap-2">
-            <Button onClick={handleClick} className="rounded bg-blue-1 px-6">
+            <Button onClick={handleClick} className="rounded bg-[#3fa065] px-6">
               {buttonIcon1 && (
                 <span className="flex-center">{buttonIcon1}</span>
               )}
@@ -73,14 +74,9 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
                   title: "Link Copied",
                 });
               }}
-              className="bg-dark-4 px-6"
+              className="bg-[#3fa065] px-6"
             >
-              <Image
-                src="/icons/copy.svg"
-                alt="feature"
-                width={20}
-                height={20}
-              />
+              <MdOutlineContentCopy />
               &nbsp; Copy Link
             </Button>
           </div>

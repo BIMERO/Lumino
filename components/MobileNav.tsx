@@ -17,10 +17,10 @@ import { cn } from "@/lib/utils";
 const MobileNav = () => {
   const pathname = usePathname();
   return (
-    <section className="w-full max-w-[264px]">
+    <section className="w-full max-w-[264px] md:hidden">
       <Sheet>
         <SheetTrigger>
-          <IoMenu size={36} className="cursor-pointer sm:hidden" />
+          <IoMenu className="cursor-pointer text-xl" />
         </SheetTrigger>
         <SheetContent side={"left"} className="border-none bg-[#f5f5f5]">
           <Link className="flex items-center gap-1" href="/">
@@ -46,17 +46,19 @@ const MobileNav = () => {
                         href={link.route}
                         className={cn(
                           "flex items-center p-4 gap-2 rounded-lg w-full max-w-60",
-                          { "bg-blue-100": isActive }
+                          { "bg-[#3fa065]": isActive }
                         )}
                       >
-                        <Image
-                          src={link.icon}
-                          alt={link.name}
-                          width={20}
-                          height={20}
-                        />
+                        <span className={cn(
+                "text-[#09180f] text-lg",
+                { "text-white": isActive }
+              )}>{link.icon}</span>
+                    
 
-                        <p className="font-semibold">{link.name}</p>
+                        <p className={cn(
+                " text-[#09180f] font-semibold max-lg:hidden",
+                { "text-white": isActive }
+              )}>{link.name}</p>
                       </Link>
                     </SheetClose>
                   );

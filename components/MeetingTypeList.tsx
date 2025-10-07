@@ -87,28 +87,28 @@ const MeetingTypeList = () => {
         title="New Meeting"
         description="Start an instant meeting"
         handleClick={() => setMeetingState("isInstantMeeting")}
-        className="bg-orange-400"
+        className="bg-[#4cc27a]"
       />
       <HomeCard
         icon={<CiCalendar size={27} />}
         title="Schedule Meeting"
         description="Plan your meeting"
         handleClick={() => setMeetingState("isScheduledMeeting")}
-        className="bg-green-400"
+        className="bg-[#4cc27a]"
       />
       <HomeCard
         icon={<IoIosVideocam size={27} />}
         title="Join Meeting"
         description="via invitation link"
         handleClick={() => setMeetingState("isJoiningMeeting")}
-        className="bg-purple-400"
+        className="bg-[#4cc27a]"
       />
       <HomeCard
         icon={<IoPersonOutline size={27} />}
         title="View Recordings"
         description="Check out your recordings"
         handleClick={() => router.push("/create")}
-        className="bg-blue-400"
+        className="bg-[#4cc27a]"
       />
 
       {!callDetails ? (
@@ -141,7 +141,7 @@ const MeetingTypeList = () => {
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
-              className="w-full rounded bg-dark-3 p-2"
+              className="w-full rounded p-2"
             />
           </div>
         </MeetingModal>

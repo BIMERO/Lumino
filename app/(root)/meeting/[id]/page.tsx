@@ -8,7 +8,7 @@ import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import React, { useState } from "react";
 
 const Meeting = ({ params: { id } }: { params: { id: string } }) => {
-  const { user, isLoaded } = useUser();
+  const { isLoaded } = useUser();
   const [isSetUpComplete, setIsSetUpComplete] = useState(false);
   const { call, isCallLoading } = useGetCallById(id);
 
@@ -18,7 +18,11 @@ const Meeting = ({ params: { id } }: { params: { id: string } }) => {
     <main className="h-screen w-full">
       <StreamCall call={call}>
         <StreamTheme>
-          {!isSetUpComplete ? <MeetingSetup setIsSetUpComplete = {setIsSetUpComplete} /> : <MeetingRoom />}
+          {!isSetUpComplete ? (
+            <MeetingSetup setIsSetUpComplete={setIsSetUpComplete} />
+          ) : (
+            <MeetingRoom />
+          )}
         </StreamTheme>
       </StreamCall>
     </main>

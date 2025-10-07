@@ -28,14 +28,14 @@ const MeetingSetup = ({setIsSetUpComplete}:{setIsSetUpComplete: (value: boolean)
       <VideoPreview />
 
       <div className="flex h-16 items-center justify-center gap-3">
-        <label className="flex items-center gap-2 font-medium">
+        <label className="flex items-center gap-2 font-medium text-[#09180f]">
           <input type="checkbox" checked={isMicOn} onChange={(e) => setIsMicOn(e.target.checked)}/>
         Join with mic and camera off
         </label>
 
         <DeviceSettings/>
       </div>
-      <Button onClick={() => {
+      <Button className="bg-[#3fa065]" onClick={() => {
         call.join();
         setIsSetUpComplete(true);
       }}> Join meeting </Button>

@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Image from "next/image";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -22,12 +21,18 @@ const Sidebar = () => {
               href={link.route}
               className={cn(
                 "flex items-center gap-4 p-4 rounded-lg justify-start",
-                { "bg-blue-100": isActive }
+                { "bg-[#3fa065]": isActive }
               )}
             >
-              <Image src={link.icon} alt={link.name} width={24} height={24} />
+              <span className={cn(
+                "text-[#09180f] text-xl",
+                { "text-white": isActive }
+              )}> {link.icon} </span>
 
-              <p className="text-lg font-semibold max-lg:hidden">{link.name}</p>
+              <p  className={cn(
+                "text-lg text-[#09180f] font-semibold max-lg:hidden",
+                { "text-white": isActive }
+              )}>{link.name}</p>
             </Link>
           );
         })}

@@ -43,7 +43,7 @@ const MeetingModal = ({
         {children}
 
         <Button
-          className="bg-blue-300 focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="bg-[#3fa065] focus-visible:ring-0 focus-visible:ring-offset-0"
           onClick={handleClick}
         >
           {buttonIcon && <div className="flex-center">{buttonIcon}</div>} &nbsp;

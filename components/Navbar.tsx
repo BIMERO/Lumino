@@ -13,12 +13,12 @@ const Navbar = () => {
           alt="Lumino"
           width={32}
           height={32}
-          className="max-sm:size-10"
+          className="w-[64px]"
         />
         <p className="text-[26px] font-extrabold max-sm:hidden">Lumino</p>
       </Link>
 
-      <div className="flex justify-between gap-3">
+      <div className="flex justify-between items-center gap-3">
         <SignedIn>
           <UserButton />
         </SignedIn>

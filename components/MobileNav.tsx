@@ -20,7 +20,7 @@ const MobileNav = () => {
     <section className="w-full max-w-[264px] md:hidden">
       <Sheet>
         <SheetTrigger>
-          <IoMenu className="cursor-pointer text-xl" />
+          <IoMenu className="cursor-pointer text-2xl" size={20} />
         </SheetTrigger>
         <SheetContent side={"left"} className="border-none bg-[#f5f5f5]">
           <Link className="flex items-center gap-1" href="/">
@@ -49,16 +49,21 @@ const MobileNav = () => {
                           { "bg-[#3fa065]": isActive }
                         )}
                       >
-                        <span className={cn(
-                "text-[#09180f] text-lg",
-                { "text-white": isActive }
-              )}>{link.icon}</span>
-                    
+                        <span
+                          className={cn("text-[#09180f] text-lg", {
+                            "text-white": isActive,
+                          })}
+                        >
+                          {link.icon}
+                        </span>
 
-                        <p className={cn(
-                " text-[#09180f] font-semibold max-lg:hidden",
-                { "text-white": isActive }
-              )}>{link.name}</p>
+                        <p
+                          className={cn("text-[#09180f] font-semibold", {
+                            "text-white": isActive,
+                          })}
+                        >
+                          {link.name}
+                        </p>
                       </Link>
                     </SheetClose>
                   );

@@ -69,44 +69,60 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
-        calls.map((meeting) => (
-          <MeetingCard
-            key={(meeting as Call).id}
-            icon={
-              type === "ended" ? (
-                <TbCalendarMinus />
-              ) : type === "upcoming" ? (
-                <TbCalendarTime />
-              ) : (
-                <BsCameraVideo />
-              )
-            }
-            title={
-              (meeting as Call).state?.custom.desc.substring(0, 20) + "..." ||
-              (meeting as CallRecording).filename.substring(0, 20) ||
-              "No Title"
-            }
-            date={
-              (meeting as Call).state?.startsAt?.toLocaleString() ||
-              (meeting as CallRecording).start_time?.toLocaleString()
-            }
-            isPreviousMeeting={type === "ended"}
-            buttonIcon1={type === "recordings" ? <IoPlayOutline /> : undefined}
-            buttonText={type === "recordings" ? "Play" : "Start"}
-            handleClick={
-              type === "recordings"
-                ? () => router.push(`${(meeting as CallRecording).url}`)
-                : () => router.push(`/meeting/${(meeting as Call).id}`)
-            }
-            link={
-              type === "recordings"
-                ? (meeting as CallRecording).url
-                : `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${
-                    (meeting as Call).id
-                  }`
-            }
-          />
-        ))
+        calls.map((meeting) => {
+          const dateString =
+            (meeting as Call).state?.startsAt ||
+            (meeting as CallRecording).start_time;
+
+          const formattedDate = dateString
+            ? new Date(dateString).toLocaleString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+              })
+            : "";
+
+          return (
+            <MeetingCard
+              key={(meeting as Call).id}
+              icon={
+                type === "ended" ? (
+                  <TbCalendarMinus />
+                ) : type === "upcoming" ? (
+                  <TbCalendarTime />
+                ) : (
+                  <BsCameraVideo />
+                )
+              }
+              title={
+                (meeting as Call).state?.custom.desc.substring(0, 20) + "..." ||
+                (meeting as CallRecording).filename.substring(0, 20) ||
+                "No Title"
+              }
+              date={formattedDate}
+              isPreviousMeeting={type === "ended"}
+              buttonIcon1={
+                type === "recordings" ? <IoPlayOutline /> : undefined
+              }
+              buttonText={type === "recordings" ? "Play" : "Start"}
+              handleClick={
+                type === "recordings"
+                  ? () => router.push(`${(meeting as CallRecording).url}`)
+                  : () => router.push(`/meeting/${(meeting as Call).id}`)
+              }
+              link={
+                type === "recordings"
+                  ? (meeting as CallRecording).url
+                  : `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${
+                      (meeting as Call).id
+                    }`
+              }
+            />
+          );
+        })
       ) : (
         <h1>{noCallsMessage}</h1>
       )}

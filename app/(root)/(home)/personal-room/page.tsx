@@ -48,7 +48,7 @@ const Page = () => {
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
 
   return (
-    <section className="flex size-full flex-col gap-10">
+    <section className="flex size-full flex-col gap-10 bg-white p-5 rounded-2xl">
       <h1 className="text-xl font-bold lg:text-3xl">Personal Meeting Room</h1>
       <div className="flex w-full flex-col gap-8 xl:max-w-[900px]">
         <Table title="Topic" desc={`${user?.username}'s Meeting Room`} />
@@ -56,11 +56,11 @@ const Page = () => {
         <Table title="Invite Link" desc={meetingLink} />
       </div>
       <div className="flex gap-5">
-        <Button className="bg-blue-1" onClick={startRoom}>
+        <Button className="bg-[#3fa065]" onClick={startRoom}>
           Start Meeting
         </Button>
         <Button
-          className="bg-dark-3"
+          className="bg-[#f3f3f3] text-[#09180f]"
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
             toast({
